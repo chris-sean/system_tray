@@ -431,6 +431,11 @@ LRESULT Tray::TrayMessageHandler(HWND window,
                                  UINT const message,
                                  WPARAM const wparam,
                                  LPARAM const lparam) noexcept {
+  switch (message) {
+    case WM_DISPLAYCHANGE: {
+      Shell_NotifyIcon(NIM_MODIFY, &nid_);
+    }
+  }
   return DefWindowProc(window, message, wparam, lparam);
 }
 
